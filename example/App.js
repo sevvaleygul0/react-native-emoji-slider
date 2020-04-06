@@ -36,11 +36,35 @@ const images = [
   {id: 5, source: require('example/assets/emo6.png')},
 ];
 
+const emojiFeatures = {
+  height: 34,
+  width: 24,
+  marginLeft: 25,
+};
+const sliderTrackFeatures = {
+  backgroundColor: '#cabcdb',
+  borderRadius: 1,
+  height: 10,
+  shadowColor: 'black',
+  shadowOffset: {width: 0, height: 1},
+  shadowOpacity: 0.15,
+  shadowRadius: 1,
+  width: '100%',
+};
+const shadowFeatures = {
+  height: 5,
+  width: 25,
+  marginLeft: 25,
+};
+
 const App: () => React$Node = () => {
   return (
     <EmojiSlider
       images={images}
-      onChange={(res) => {
+      emojiFeatures={emojiFeatures}
+      sliderTrackFeatures={sliderTrackFeatures}
+      shadowFeatures={shadowFeatures}
+      onChange={res => {
         console.log('res:', res);
       }}
     />
