@@ -167,7 +167,7 @@ export default class EmojiSlider extends Component {
             value={this.state.value}
             onValueChange={value => this.onChange(value)}
           />
-          <Text>Value: {number}</Text>
+          <Text style={styles.text}>Value: {number}</Text>
         </View>
       </View>
     );
@@ -184,6 +184,12 @@ const styles = StyleSheet.create({
   },
   sliderContainer: {
     width: '100%',
+  },
+  text: {
+    justifyContent: 'center',
+    alignSelf: 'center',
+    fontSize: 18,
+    color: '#492f5b',
   },
   thumb: {
     backgroundColor: '#f8a1d6',
