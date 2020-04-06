@@ -59,16 +59,27 @@ const shadowFeatures = {
 
 const App: () => React$Node = () => {
   return (
-    <EmojiSlider
-      images={images}
-      emojiFeatures={emojiFeatures}
-      sliderTrackFeatures={sliderTrackFeatures}
-      shadowFeatures={shadowFeatures}
-      onChange={res => {
-        console.log('res:', res);
-      }}
-    />
+    <View style={styles.container}>
+      <EmojiSlider
+        images={images}
+        emojiFeatures={emojiFeatures}
+        sliderTrackFeatures={sliderTrackFeatures}
+        shadowFeatures={shadowFeatures}
+        onChange={res => {
+          console.log('res:', res);
+        }}
+      />
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'stretch',
+    justifyContent: 'center',
+    backgroundColor: '#b991bf',
+  },
+});
 
 export default App;

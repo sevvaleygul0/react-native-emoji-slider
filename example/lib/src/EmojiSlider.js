@@ -34,7 +34,7 @@ export default class EmojiSlider extends Component {
         }),
         Animated.timing(this.state.yValue, {
           toValue: 0,
-          duration: 1000,
+          duration: 800,
           //easing: Easing.linear,
         }),
       ]),
@@ -125,11 +125,11 @@ export default class EmojiSlider extends Component {
     number = number.toFixed(0);
     this.state.yValue.addListener(({value}) => console.log(value));
     switch (true) {
-      case value > 0.5 && value <= 1.4:
+      case value > 1.3 && value <= 1.9:
         selectedImage = 0;
         selectedMood = 'cry';
         break;
-      case value > 2.3 && value < 3:
+      case value > 2.3 && value < 3.3:
         selectedImage = 1;
         selectedMood = 'unhappy';
         break;
@@ -145,7 +145,7 @@ export default class EmojiSlider extends Component {
         selectedImage = 4;
         selectedMood = 'laughing';
         break;
-      case value >= 8.3 && value < 9:
+      case value >= 8 && value < 8.5:
         selectedImage = 5;
         selectedMood = 'love';
         break;
@@ -154,7 +154,7 @@ export default class EmojiSlider extends Component {
         break;
     }
     return (
-      <View style={styles.container}>
+      <View>
         <View style={styles.sliderContainer}>
           {this.renderImageContent()}
           <Slider
@@ -178,14 +178,6 @@ const COLORS = {
   WHITE: 'white',
 };
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginLeft: 10,
-    marginRight: 10,
-    alignItems: 'stretch',
-    justifyContent: 'center',
-    backgroundColor: '#b991bf',
-  },
   flatListContainer: {
     height: 100,
     width: '100%',
