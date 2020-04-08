@@ -1,21 +1,14 @@
-<img alt="React Native Library Boilerplate" src="assets/logo.png" width="1050"/>
+<img alt="React Native Emoji Slider" src="assets/emoji.png" width="1050"/>
 
-
-[![Battle Tested ✅](https://img.shields.io/badge/-Battle--Tested%20%E2%9C%85-03666e?style=for-the-badge)](https://github.com/WrathChaos/react-native-library-boilerplate)
-
-
-[![React Native Library Boiler Plate](https://img.shields.io/badge/-React%20Native%20Library%20Boilerplate-lightgrey?style=for-the-badge)](https://github.com/WrathChaos/react-native-library-boilerplate)
-
-
-[![npm version](https://img.shields.io/npm/v/react-native-library-boilerplate.svg?style=for-the-badge)](https://www.npmjs.com/package/react-native-library-boilerplate)
-[![npm](https://img.shields.io/npm/dt/react-native-library-boilerplate.svg?style=for-the-badge)](https://www.npmjs.com/package/react-native-library-boilerplate)
 ![Platform - Android and iOS](https://img.shields.io/badge/platform-Android%20%7C%20iOS-blue.svg?style=for-the-badge)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg?style=for-the-badge)](https://github.com/prettier/prettier)
 
 <p align="center">
-  <img alt="React Native Library Boilerplate"
-        src="assets/Screenshots/JSLibraryBoilerplate.png" />
+  <img alt="React Native Emoji Slider Image" 
+        src="assets/Screenshots/emoji2.png"  width="49.7%"/>
+  <img alt="React Native Emoji Slider Image2" 
+        src="assets/Screenshots/emoji3.png"  width="49.7%"/>
 </p>
 
 # Installation
@@ -23,7 +16,7 @@
 Add the dependency:
 
 ```ruby
-npm i react-native-library-boilerplate
+npm i react-native-emoji-slider
 ```
 
 ## Peer Dependencies
@@ -33,6 +26,7 @@ npm i react-native-library-boilerplate
 ```js
 "react": ">= 16.x.x",
 "react-native": ">= 0.55.x",
+"@miblanchard/react-native-slider": "^1.1.0"
 ```
 
 # Usage
@@ -40,23 +34,20 @@ npm i react-native-library-boilerplate
 ## Import
 
 ```js
-import { Component1, Component2 } from "react-native-library-boilerplate";
+import EmojiSlider from "react-native-emoji-slider";
+
+<EmojiSlider />;
 ```
 
-## Component1 Usage
+## EmojiSlider Usage
 
 ```js
-<Component1 />
+<EmojiSlider
+  onChange={res => {
+    console.log('res:', res);
+  }}
+/>
 ```
-
-# Configuration - Props
-
-| Property |  Type   | Default | Description                                             |
-| -------- | :-----: | :-----: | ------------------------------------------------------- |
-| outline  | boolean |  true   | make the button outline                                 |
-| solid    | boolean |  false  | make the button with a solid background and a shadow    |
-| gradient | boolean |  false  | make the button with a gradient background and a shadow |
-| width    | number  |   150   | change the button's width                               |
 
 ## Future Plans
 
@@ -69,7 +60,7 @@ Change log will be here !
 
 ## Author
 
-FreakyCoder, kurayogun@gmail.com
+Şevval EYGÜL, sevvalleygull@gmail.com
 
 ## License
 

@@ -1,23 +1,16 @@
 {
-  "name": "react-native-library-boilerplate",
-  "version": "0.0.2",
+  "name": "react-native-emoji-slider",
+  "version": "0.0.1",
   "description": "Description for library",
   "keywords": [
-    "FreakyCoder",
-    "freakycoder",
-    "kuray",
-    "Kuray",
-    "react",
     "react-native",
     "javascript",
     "ui-lib",
     "rn"
   ],
-  "homepage": "https://www.freakycoder.com",
-  "bugs": "https://github.com/WrathChaos/react-native-library-boilerplate/issues",
+  "bugs": "https://github.com/sevvaleygul0/react-native-emoji-slider/issues",
   "main": "./lib/src/index.js",
-  "repository": "git@github.com:WrathChaos/react-native-library-boilerplate.git",
-  "author": "Kuray (FreakyCoder) <kurayogun@gmail.com>",
+  "author": "Sevval <sevvalleygull@gmail.com>",
   "license": "MIT",
   "peerDependencies": {
     "react": ">= 16.x.x",
