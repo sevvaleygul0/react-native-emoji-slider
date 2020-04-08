@@ -16,9 +16,10 @@ export default class EmojiSlider extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 1,
+      value: 0.45,
       mood: null,
       yValue: new Animated.Value(0),
+      downValue: new Animated.Value(0),
     };
     let selectedImage = 8;
     let selectedMood = '';
@@ -30,20 +31,23 @@ export default class EmojiSlider extends Component {
         Animated.timing(this.state.yValue, {
           toValue: -10,
           duration: 1000,
-          //easing: Easing.back(),
         }),
         Animated.timing(this.state.yValue, {
           toValue: 0,
           duration: 800,
-          //easing: Easing.linear,
         }),
       ]),
     ).start();
   };
 
+  downMoveAnimation = () => {
+    Animated.timing(this.state.downValue, {
+      toValue: 0,
+      duration: 5000,
+    });
+  };
+
   selectedImage = item => {
-    const {emojiFeatures} = this.props;
-    const {height, width, marginLeft} = emojiFeatures;
     const animatedStyles = {
       transform: [
         {
@@ -61,7 +65,7 @@ export default class EmojiSlider extends Component {
           {this.moveAnimation()}
           <View>
             <Image
-              style={{width: 25, height: 5, marginTop: 10, marginLeft: 25}}
+              style={{width: 25, height: 5, marginTop: 10}}
               source={require('example/assets/emo7.png')}
             />
           </View>
@@ -69,29 +73,35 @@ export default class EmojiSlider extends Component {
       );
     } else {
       return (
-        <Image
-          style={{width, height, marginTop: 50, marginLeft}}
-          source={item.source}
-        />
+        <View>
+          {this.downMoveAnimation()}
+          <Animated.Image
+            style={[
+              {width: 25, height: 35, marginTop: 50},
+              {bottom: this.state.downValue},
+            ]}
+            source={item.source}
+          />
+        </View>
       );
     }
   };
 
   renderImageContent = () => {
-    const {images} = this.props;
+    const images = [
+      {id: 0, source: require('example/assets/emo1.png')},
+      {id: 1, source: require('example/assets/emo2.png')},
+      {id: 2, source: require('example/assets/emo3.png')},
+      {id: 3, source: require('example/assets/emo4.png')},
+      {id: 4, source: require('example/assets/emo5.png')},
+      {id: 5, source: require('example/assets/emo6.png')},
+    ];
+
     return (
-      <View style={styles.flatListContainer}>
-        <FlatList
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          data={images}
-          renderItem={({item}) => {
-            return this.selectedImage(item);
-          }}
-          keyExtractor={index => {
-            return index;
-          }}
-        />
+      <View style={styles.imageListContainer}>
+        {images.map(item => {
+          return this.selectedImage(item);
+        })}
       </View>
     );
   };
@@ -100,7 +110,7 @@ export default class EmojiSlider extends Component {
     this.setState({value: data});
     let obj = [
       {
-        value: this.state.value,
+        value: selectedImage,
         mood: selectedMood,
       },
     ];
@@ -108,66 +118,48 @@ export default class EmojiSlider extends Component {
   };
 
   render() {
-    const {images, sliderTrackFeatures} = this.props;
-    // const {
-    //   backgroundColor = '#cabcdb',
-    //   borderRadius = 4,
-    //   height = 10,
-    //   shadowColor = 'black',
-    //   shadowOffset = {width: 0, height: 1},
-    //   shadowOpacity = 0.15,
-    //   shadowRadius = 1,
-    //   width = '100%',
-    // } = sliderTrackFeatures;
+    const {images} = this.props;
     const {value} = this.state;
     let number = value;
     number = parseFloat(value);
     number = number.toFixed(0);
-    this.state.yValue.addListener(({value}) => console.log(value));
-    switch (true) {
-      case value > 1.3 && value <= 1.9:
-        selectedImage = 0;
-        selectedMood = 'cry';
-        break;
-      case value > 2.3 && value < 3.3:
-        selectedImage = 1;
-        selectedMood = 'unhappy';
-        break;
-      case value >= 4 && value < 4.6:
-        selectedImage = 2;
-        selectedMood = 'worried';
-        break;
-      case value >= 5 && value < 6:
-        selectedImage = 3;
-        selectedMood = 'happy';
-        break;
-      case value >= 6.8 && value < 7.5:
-        selectedImage = 4;
-        selectedMood = 'laughing';
-        break;
-      case value >= 8 && value < 8.5:
-        selectedImage = 5;
-        selectedMood = 'love';
-        break;
-      default:
-        selectedImage = 6;
-        break;
+
+    if (value > 0.3 && value <= 1.25) {
+      selectedImage = 0;
+      selectedMood = 'cry';
+    } else if (value > 1.9 && value < 3.1) {
+      selectedImage = 1;
+      selectedMood = 'unhappy';
+    } else if (value >= 3.6 && value < 4.6) {
+      selectedImage = 2;
+      selectedMood = 'worried';
+    } else if (value >= 5.2 && value < 6.23) {
+      selectedImage = 3;
+      selectedMood = 'happy';
+    } else if (value >= 7 && value < 7.9) {
+      selectedImage = 4;
+      selectedMood = 'laughing';
+    } else if (value >= 8.7 && value < 9.5) {
+      selectedImage = 5;
+      selectedMood = 'love';
+    } else {
+      selectedImage = null;
+      selectedMood = '';
     }
     return (
       <View>
         <View style={styles.sliderContainer}>
           {this.renderImageContent()}
           <Slider
-            minimumValue={1}
+            minimumValue={0}
             maximumValue={10}
             animateTransition
             minimumTrackTintColor="#d14ba6"
             thumbStyle={styles.thumb}
-            trackStyle={sliderTrackFeatures}
+            trackStyle={styles.track}
             value={this.state.value}
             onValueChange={value => this.onChange(value)}
           />
-          <Text style={styles.text}>Value: {number}</Text>
         </View>
       </View>
     );
@@ -178,19 +170,19 @@ const COLORS = {
   WHITE: 'white',
 };
 const styles = StyleSheet.create({
-  flatListContainer: {
+  imageListContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
     height: 100,
     width: '100%',
   },
   sliderContainer: {
-    width: '100%',
-  },
-  text: {
-    justifyContent: 'center',
+    width: '90%',
     alignSelf: 'center',
-    fontSize: 18,
-    color: '#492f5b',
+    borderWidth: 2,
+    marginTop: 20,
   },
+
   thumb: {
     backgroundColor: '#f8a1d6',
     borderColor: '#a4126e',
@@ -213,14 +205,8 @@ const styles = StyleSheet.create({
     shadowRadius: 1,
     width: '100%',
   },
-  animationView: {
-    width: 100,
-    height: 200,
-    backgroundColor: 'skyblue',
-  },
   imageView: {
     width: 25,
     height: 35,
-    marginLeft: 25,
   },
 });
