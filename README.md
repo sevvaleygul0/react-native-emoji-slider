@@ -1,4 +1,4 @@
-<img alt="React Native Emoji Slider" src="assets/emoji.png" width="1050"/>
+<img alt="React Native Emoji Slider" src="assets/logo1.png" width="1050"/>
 
 ![Platform - Android and iOS](https://img.shields.io/badge/platform-Android%20%7C%20iOS-blue.svg?style=for-the-badge)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
@@ -6,9 +6,9 @@
 
 <p align="center">
   <img alt="React Native Emoji Slider Image" 
-        src="assets/Screenshots/emoji2.png"  width="49.7%"/>
+        src="assets/Screenshots/image2.png"  width="49.7%"/>
   <img alt="React Native Emoji Slider Image2" 
-        src="assets/Screenshots/emoji3.png"  width="49.7%"/>
+        src="assets/Screenshots/image3.png"  width="49.7%"/>
 </p>
 
 # Installation
@@ -43,8 +43,8 @@ import EmojiSlider from "react-native-emoji-slider";
 
 ```js
 <EmojiSlider
-  onChange={res => {
-    console.log('res:', res);
+  onChange={(res) => {
+    console.log("res:", res);
   }}
 />
 ```
