@@ -24,7 +24,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import EmojiSlider from 'example/lib/src/EmojiSlider.js';
+import EmojiSlider from 'react-native-emoji-slider';
 
 const App: () => React$Node = () => {
   return (
